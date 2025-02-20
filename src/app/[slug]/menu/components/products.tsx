@@ -1,10 +1,9 @@
 import { Product } from '@prisma/client';
-import { ChevronLeftIcon, ScrollTextIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
-import { Button } from '@/components/ui/button';
+import { formatCurrency } from '@/helpers/formatCurrency';
 
 interface ProductsProps {
   products: Product[];
@@ -26,34 +25,16 @@ const Products = ({ products }: ProductsProps) => {
               {product.description}
             </p>
             <p className="pt-e text-sm font-semibold">
-              {Intl.NumberFormat('pt-br', {
-                style: 'currency',
-                currency: 'BRL',
-              }).format(product.price)}
+              {formatCurrency(product.price)}
             </p>
           </div>
           <div className="relative min-h-[82px] min-w-[120px]">
-            <Button
-              variant="secondary"
-              size="icon"
-              className="absolute top-4 left-4 rounded-full z-50"
-            >
-              <ChevronLeftIcon />
-            </Button>
-
             <Image
               src={product.imageUrl}
               alt={product.name}
               fill
               className="object-contain rounded-lg"
             />
-            <Button
-              variant="secondary"
-              size="icon"
-              className="absolute top-4 right-4 rounded-full z-50"
-            >
-              <ScrollTextIcon />
-            </Button>
           </div>
         </Link>
       ))}
