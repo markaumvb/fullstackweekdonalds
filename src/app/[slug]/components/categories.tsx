@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Prisma } from '@prisma/client';
-import { ClockIcon } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
+import { Prisma } from "@prisma/client";
+import { ClockIcon } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
-import { Button } from '@/components/ui/button';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { Button } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-import Products from '../menu/components/products';
+import Products from "../menu/components/products";
 
 interface RestaurantCategoriesProps {
   restaurant: Prisma.RestaurantGetPayload<{
@@ -33,7 +33,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
   };
 
   const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
-    return selectedCategory.id === category.id ? 'default' : 'secondary';
+    return selectedCategory.id === category.id ? "default" : "secondary";
   };
   return (
     <div className="relative z-50 mt-[-1.5rem] rounded-t-3xl bg-white">
