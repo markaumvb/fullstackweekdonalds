@@ -30,6 +30,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
     setSelectedCategory(category);
   };
   //Deixar o botão amarelo na categoria selecionada ---01:14 <<
+  // aqui https://youtu.be/EEvF4GfZE6o?si=TBwblXEDF83-8tMl&t=4443
   const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
     return selectedCategory.id === category.id ? 'default' : 'secondary';
   };
