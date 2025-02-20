@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
+import Products from '../menu/components/products';
+
 interface RestaurantCategoriesProps {
   restaurant: Prisma.RestaurantGetPayload<{
     include: {
@@ -29,8 +31,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
   const handleCategoryClick = (category: MenuCategoriesWithProducts) => {
     setSelectedCategory(category);
   };
-  //Deixar o botão amarelo na categoria selecionada ---01:14 <<
-  // aqui https://youtu.be/EEvF4GfZE6o?si=TBwblXEDF83-8tMl&t=4443
+
   const getCategoryButtonVariant = (category: MenuCategoriesWithProducts) => {
     return selectedCategory.id === category.id ? 'default' : 'secondary';
   };
@@ -73,6 +74,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
       </ScrollArea>
 
       <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
+      <Products products={selectedCategory.products} />
     </div>
   );
 };
