@@ -1,22 +1,24 @@
-'use client';
-import { Product } from '@prisma/client';
-import { ChevronLeftIcon, ScrollTextIcon } from 'lucide-react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+"use client";
+import { Product } from "@prisma/client";
+import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 interface ProductHeaderProps {
-  product: Pick<Product, 'imageUrl' | 'name'>;
+  product: Pick<Product, "imageUrl" | "name">;
 }
 const ProductHeader = ({ product }: ProductHeaderProps) => {
+  const { slug } = useParams<{ slug: string }>();
+  const handleOrderClick = () => router.push(`/${slug}/orders`);
   const router = useRouter();
   const handleBackClick = () => router.back();
   return (
-    <div className="relative w-full h-[300px]">
+    <div className="relative h-[300px] w-full">
       <Button
         variant="secondary"
         size="icon"
-        className="absolute top-4 left-4 rounded-full z-50"
+        className="absolute left-4 top-4 z-50 rounded-full"
         onClick={handleBackClick}
       >
         <ChevronLeftIcon />
@@ -31,7 +33,8 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
       <Button
         variant="secondary"
         size="icon"
-        className="absolute top-4 right-4 rounded-full z-50"
+        className="absolute right-4 top-4 z-50 rounded-full"
+        onClick={handleOrderClick}
       >
         <ScrollTextIcon />
       </Button>

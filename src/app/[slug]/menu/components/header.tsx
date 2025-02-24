@@ -13,7 +13,7 @@ const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
   const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
   const handleBackClick = () => router.back();
-  const handleOrderClick = () => router.push(`/${slug}/order`);
+  const handleOrderClick = () => router.push(`/${slug}/orders`);
   return (
     <div className="relative h-[250px] w-full">
       <Button
